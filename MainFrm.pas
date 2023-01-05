@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   StdCtrls, ComCtrls, Clipbrd, ShlObj, ShellAPI, ActiveX, ComObj, ExtCtrls,
-  Menus, Buttons, ToolWin, ImgList, Shell32_TLB;
+  Menus, Buttons, ToolWin, ImgList;
 
 type
   TMainForm = class(TForm)
@@ -511,16 +511,15 @@ end;
 //*****************************************************************************
 function TMainForm.GetLinkPath(FileName: String): String;
 var
-  objShell: Shell;
-  FItem: FolderItem;
+  objShell, FItem: OleVariant;
 begin
   try
-    objShell := CreateOleObject('Shell.Application') as Shell;
+    objShell := CreateOleObject('Shell.Application');
     FItem := objShell.NameSpace(0).ParseName(FileName);
 
     //ショートカットファイル(*.lnk,*.pif,*.url)ならTrue
     if FItem.IsLink then
-      Result := (FItem.GetLink as ShellLinkObject).Path
+      Result := FItem.GetLink.Path
     else
       Result := FileName;
 
