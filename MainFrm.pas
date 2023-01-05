@@ -530,56 +530,8 @@ begin
   except on E: Exception do
     Result := FileName;
   end;
-
-//  VarClear(FItem);
-//  VarClear(Shell);
-//=============================================================================
-//  IShellLinkを使用するにusesにShlObjが必要
-//  IPersistFileを使用するにはusesにActiveXが必要
-//  CreateComObjectを使用するにはusesにComObjが必要
-//=============================================================================
-///////////////////////////////////////////////////////////////////////
-//var
-//     ShellLink   : IShellLink;
-//     PersistFile : IPersistFile;
-//     FilePath    : array[0..MAX_PATH] of char;
-//     WorkDir     : array[0..MAX_PATH] of char ;
-//     Arg         : array[0..MAX_PATH] of char;
-//     FileLink    : String;
-//     wsz         : array[0..MAX_PATH] of WideChar;
-//     pfd         : TWin32FindData;
-//begin
-//     FileLink := FileName;
-//     ShellLink := CreateComObject(CLSID_ShellLink) as IShellLink;
-//     OleCheck(ShellLink.QueryInterface(IPersistFile,PersistFile));
-
-//    Assert(Assigned(PersistFile));
-//     MultiByteToWideChar(CP_ACP,0,PChar(FileLink),-1,wsz,MAX_PATH);
-//     OleCheck(PersistFile.Load(wsz,0));
-//     OleCheck(ShellLink.GetPath(FilePath,MAX_PATH,pfd,SLGP_RAWPATH));
-//     OleCheck(ShellLink.GetWorkingDirectory(WorkDir,MAX_PATH));
-//     OleCheck(ShellLink.GetArguments(Arg, MAX_PATH));
-//     result := FilePath;
-///////////////////////////////////////////////////////////////////////
 end;
 
-//*****************************************************************************
-//[ 関　数 ]　GetLongFileName
-//[ 概  要 ]　ロングファイル名を取得する
-//[ 引  数 ]　ファイル名
-//[ 戻り値 ]　ロングファイル名
-//*****************************************************************************
-//function GetLongFileName(AFileName: TFileName): TFileName;
-//var
-//  SHFileInfo: TSHFileInfo;
-//begin
-//  SHGetFileInfo(PChar(AFileName),
-//                0,
-//                SHFileInfo,
-//                Sizeof(TSHFileInfo),
-//                SHGFI_DISPLAYNAME);
-//  Result := SHFileInfo.szDisplayName;
-//end;
 end.
 
 

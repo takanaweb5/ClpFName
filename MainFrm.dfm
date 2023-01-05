@@ -1,4 +1,4 @@
-﻿object MainForm: TMainForm
+object MainForm: TMainForm
   Left = 135
   Top = 187
   Caption = #12501#12449#12452#12523#21517#19968#35239
